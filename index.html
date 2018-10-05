@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Gaming Content Search App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style href="styles.css"></style>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<header role="banner">
+		<h1>Gaming Search App</h1>
+		<h2>Search for streams, clips, and competitive information on your favorite titles</h2>
+	</header>
+	<main role="main" class="js-main">
+		<form id="js-form">
+			<fieldset>
+				<legend role="legend">Search for info on a title, and choose which results to display</legend>
+				<input type="text" class="js-search" placeholder="Game title...">
+				<input type="number" class="js-max-results" value="10">			
+				<input type="checkbox" class="js-checkbox-1">
+				<input type="checkbox" class="js-checkbox-2">
+				<input type="checkbox" class="js-checkbox-3">
+				<input type="submit" id="js-submit-btn" class="js-submit">
+			</fieldset>
+		</form>
+		<section role="region" class="js-results-1 hidden">
+		</section>
+		<section role="region" class="js-results-2 hidden">
+		</section>
+		<section role="region" class="js-results-3 hidden">
+		</section>
+	</main>
+	<script src="main.js"></script>
+</body>
+</html>
