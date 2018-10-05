@@ -3,7 +3,7 @@
 <head>
 	<title>Gaming Content Search App</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style href="styles.css"></style>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -19,19 +19,21 @@
 			<fieldset>
 				<legend role="legend">Search for info on a title, and choose which results to display</legend>
 				<input type="text" class="js-search" placeholder="Game title...">
-				<input type="number" class="js-max-results" value="10">			
-				<input type="checkbox" class="js-checkbox-1">
-				<input type="checkbox" class="js-checkbox-2">
-				<input type="checkbox" class="js-checkbox-3">
+				<input type="number" class="js-max-results" value="10" placeholder="10">			
+				<input type="checkbox" class="js-checkbox-1" value="streams"> Look for Streams
+				<input type="checkbox" class="js-checkbox-2" value="clips"> Look for Clips
+				<input type="checkbox" class="js-checkbox-3" calue="events"> Look for Competitive Events
 				<input type="submit" id="js-submit-btn" class="js-submit">
 			</fieldset>
 		</form>
-		<section role="region" class="js-results-1 hidden">
-		</section>
-		<section role="region" class="js-results-2 hidden">
-		</section>
-		<section role="region" class="js-results-3 hidden">
-		</section>
+		<div class="row results-container">
+			<section role="region" class="js-results-1 hidden column-3">
+			</section>
+			<section role="region" class="js-results-2 hidden column-3">
+			</section>
+			<section role="region" class="js-results-3 hidden column-3">
+			</section>
+		</div>
 	</main>
 	<script src="main.js"></script>
 </body>
