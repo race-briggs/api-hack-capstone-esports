@@ -9,8 +9,6 @@ body {
 
 header {
 	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 h1, h2, legend {
@@ -19,8 +17,6 @@ h1, h2, legend {
 }
 
 form {
-	margin-left: auto;
-	margin-right: auto;
 	text-align: center;
 	padding: 20px;
 }
