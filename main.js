@@ -26,7 +26,7 @@ function fetchTwitchStreamData(query, maxResults=10) {
 		})
 	}
 
-	const url = 'https://api.twitch.tv/kraken/search/streams?query=' + encodeURIComponent(query)
+	const url = `https://api.twitch.tv/kraken/search/streams?query=${encodeURIComponent(query)}&limit=${maxResults}`
 
 	fetch(url, options)
 		.then(response => {
@@ -49,11 +49,11 @@ function fetchTwitchClipsData(query, maxResults) {
 		method: 'GET',
 		headers: new Headers ({
 			'accept': 'application/json',
-			'Client-ID': twitchApiKey,
+			'Client-ID': twitchApiKey
 		})
 	};
 
-	const url = 'https://api.twitch.tv/kraken/clips/top?game=' + formatSearchQuery(query)
+	const url = `https://api.twitch.tv/kraken/clips/top?game=${query}&limit=${maxResults}`
 
 	fetch(url, options)
 		.then(response => {
@@ -71,6 +71,30 @@ function fetchTwitchClipsData(query, maxResults) {
 }
 
 function fetchEsportsData(query, maxResults) {
+
+	const options = {
+		mode: 'cors',
+		method: 'GET',
+		headers: new Headers({
+			'accept': 'application/json',
+			'token': pandaScoreApiKey
+		})
+	}
+
+	const url = `https://api.pandascore.co/videogames/${encodeURIComponent(query)}/tournaments`
+
+	fetch(url, options)
+		.then(response => {
+			if(response.ok){
+				return response.json();
+			} else {
+				throw new Error(response.statusText);
+			}
+		})
+		.then(responseJson => displayResults(responseJson, maxResults))
+		.catch(e => {
+			alert('An error occurred.');
+		});
 
 }
 

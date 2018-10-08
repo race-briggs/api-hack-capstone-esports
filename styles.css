@@ -11,12 +11,20 @@ header {
 	text-align: center;
 }
 
+
+
 h1, h2, legend {
 	text-align: center;
 	margin-bottom: 20px;
+	font-family: 'Merienda One', cursive;
+}
+
+h1 {
+	font-family: 'Faster One', cursive;
 }
 
 form {
+	font-family: 'Signika', sans-serif;
 	text-align: center;
 	padding: 20px;
 }
@@ -30,8 +38,10 @@ section {
 }
 
 .column-3 {
-    float: left;
-    width: 33.33%;
+  float: left;
+  width: 33.33%;
+  padding-left: 1.04166666%;
+	padding-right: 1.04166666%;
 }
 
 .row:after {
