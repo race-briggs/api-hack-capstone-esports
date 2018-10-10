@@ -10,7 +10,7 @@ const twitchApiKey = "tszgw747t4ad80nlczn9t658cma89p";
 	return queryTerm.join('&');
 } */
 
-function displayResults(response, maxResults) {
+function displayResults(response, maxResults=10) {
 	console.log('displayResults ran!');
 	console.log(responseJson);
 }
@@ -26,7 +26,7 @@ function fetchTwitchStreamData(query, maxResults=10) {
 		})
 	}
 
-	const url = `https://api.twitch.tv/kraken/search/streams?query=${encodeURIComponent(query)}&limit=${maxResults}`
+	const url = `https://api.twitch.tv/kraken/search/streams?query=${encodeURIComponent(query)}`
 
 	fetch(url, options)
 		.then(response => {
@@ -37,12 +37,13 @@ function fetchTwitchStreamData(query, maxResults=10) {
 			}
 		})
 		.then(responseJson => displayResults(responseJson, maxResults))
+		//.then(console.log(JSON.stringify(responseJson)))
 		.catch(e => {
 			alert('An error occurred.');
 		});
 }
 
-function fetchTwitchClipsData(query, maxResults) {
+function fetchTwitchClipsData(query, maxResults=10) {
 
 	const options = {
 		mode: 'cors',
@@ -70,7 +71,7 @@ function fetchTwitchClipsData(query, maxResults) {
 
 }
 
-function fetchEsportsData(query, maxResults) {
+function fetchEsportsData(query, maxResults=10) {
 
 	const options = {
 		mode: 'cors',
