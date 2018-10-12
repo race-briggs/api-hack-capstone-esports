@@ -36,16 +36,24 @@ fieldset {
 }
 
 section {
-	background-color: grey;
+	background-color: rgba(110, 110, 110, 0.4);
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid black;
 }
 
 ul {
+	padding: 0;
 	list-style-type: none;
 }
 
 li {
 	text-align: center;
 }
+
+.js-results-1, .js-results-2 {
+} 
 
 .stream-url {
 	display: block;
@@ -67,4 +75,10 @@ li {
 
 .hidden {
 	display: none;
+}
+
+.stream-result, .clips-li {
+}
+
+.stream-preview {
 }

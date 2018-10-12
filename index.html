@@ -19,11 +19,13 @@
 		<form id="js-form">
 			<fieldset>
 				<legend role="legend">Search for info on a title, and choose which results to display</legend>
-				<input type="text" class="js-search" placeholder="Game title...">
-				<input type="number" class="js-max-results" value="10" placeholder="10">			
-				<input type="checkbox" class="js-checkbox-1" value="streams"> Look for Streams
-				<input type="checkbox" class="js-checkbox-2" value="clips"> Look for Clips
-				<input type="checkbox" class="js-checkbox-3" value="events"> Look for Competitive Events
+				<input type="text" class="js-search" placeholder="Game title..." required>
+				<input type="number" class="js-max-results" value="10" placeholder="10" required>
+				<div class="chk-box-container">			
+					<input type="checkbox" class="js-checkbox-1" value="streams"> Look for Streams
+					<input type="checkbox" class="js-checkbox-2" value="clips"> Look for Clips
+					<input type="checkbox" class="js-checkbox-3" value="events"> Look for Competitive Events
+				</div>
 				<input type="submit" id="js-submit-btn" class="js-submit">
 			</fieldset>
 		</form>
