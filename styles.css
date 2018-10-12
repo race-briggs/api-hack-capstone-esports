@@ -21,6 +21,10 @@ h1 {
 	font-family: 'Faster One', cursive;
 }
 
+h3 {
+	text-align: center;
+}
+
 form {
 	font-family: 'Signika', sans-serif;
 	text-align: center;
@@ -33,6 +37,18 @@ fieldset {
 
 section {
 	background-color: grey;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	text-align: center;
+}
+
+.stream-url {
+	display: block;
 }
 
 .column-3 {
