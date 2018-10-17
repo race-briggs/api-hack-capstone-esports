@@ -2,7 +2,15 @@
 	box-sizing: border-box;
 }
 
+html {
+	margin: auto;
+	text-align: center;
+	padding: 5px;
+}
+
 body {
+	background-image: url("file:///C:/Users/raceb/Downloads/SVG_BG_Race_Icons_FINAL-01.svg");
+	background-size: cover;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -12,6 +20,7 @@ header {
 }
 
 h1, h2, legend {
+	color: white;
 	text-align: center;
 	margin-bottom: 20px;
 	font-family: 'Merienda One', cursive;
@@ -23,10 +32,12 @@ h1 {
 
 h3 {
 	text-align: center;
+	display: block;
 }
 
 form {
 	font-family: 'Signika', sans-serif;
+	color: white;
 	text-align: center;
 	padding: 20px;
 }
@@ -52,11 +63,19 @@ li {
 	text-align: center;
 }
 
+.results-container {
+}
+
 .js-results-1, .js-results-2 {
 } 
 
 .stream-url {
 	display: block;
+}
+
+.row {
+	padding-left: 2%;
+	padding-right: 2%;
 }
 
 .column-3 {
@@ -66,12 +85,12 @@ li {
 	padding-right: 1.04166666%;
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 
+
+.chk-box-container {
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
 
 .hidden {
 	display: none;
@@ -81,4 +100,45 @@ li {
 }
 
 .stream-preview {
+}
+
+.checkbox-block {
+	display: block;
+	text-align: center;
+}
+
+@media only screen and (max-width: 640px) {
+
+	.row {
+	  max-width: 1000px;
+	  padding-left: 20px;
+	  padding-right: 20px;
+	  margin: 0 auto;
+	}
+
+	.row::before,
+	.row::after {
+	  content: "";
+	  display: table;
+	}
+
+	.row::after {
+	  clear: both;
+	}
+
+	.column-3 {
+	float: left;
+  width: 100%;
+  padding-left: 1.04166666%;
+	padding-right: 1.04166666%;
+	}
+
+	input {
+		margin-bottom: 5%;
+	}
+
+	input[type=checkbox] {
+		font-size: 0.5em;
+		text-align: left;
+	}
 }

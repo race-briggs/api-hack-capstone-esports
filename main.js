@@ -17,8 +17,9 @@ function displayStreams(responseJson, maxResults) {
 	console.log(responseJson);
 	$('.js-results-1').empty();
 	$('.js-results-1').append(
-		`<h3>Top Live Streams</h3>
-		<ul class="stream-results-list"></ul>`
+		`<ul class="stream-results-list">
+			<li><h3>Top Live Streams</h3></li>
+		</ul>`
 		);
 	for(let i = 0; i < maxResults; i++) {
 		$('.stream-results-list').append(`
@@ -28,6 +29,7 @@ function displayStreams(responseJson, maxResults) {
 				<a class="stream-url" href="${responseJson.streams[i].channel.url}">${responseJson.streams[i].channel.url}</a>
 			</li>
 			`)
+	$('.js-results-1').removeClass('hidden');
 	};
 };
 
@@ -37,25 +39,25 @@ function displayClips(responseJson, maxResults) {
 	console.log(responseJson);
 	$('.js-results-2').empty();
 	$('.js-results-2').append(
-		`<h3>Top Clips</h3>
-		<ul class="clip-results-list"></ul>`
+		`<ul class="clip-results-list">
+			<li><h3>Top Clips</h3></li>
+		</ul>`
 		);
 	for(let i = 0; i < maxResults; i++) {
 		$('.clip-results-list').append(`
 			<li class="clip-li">
 				<h4>${responseJson.clips[i].title}</h4>
 				<iframe
-		    src="https://clips.twitch.tv/embed?clip=${responseJson.clips[i].slug}"
+		    src="https://clips.twitch.tv/embed?clip=${responseJson.clips[i].slug}&autoplay=false"
 		    height="300"
 		    width="400"
 		    preload="metadata"
-		    frameborder=""
 		    scrolling="no"
-		    allowfullscreen="true"
-		    autoplay="false">
+		    allowfullscreen="true">
 				</iframe>
 			</li>
 			`)
+		$('.js-results-2').removeClass('hidden');
 	};
 };
 
