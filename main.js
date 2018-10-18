@@ -1,14 +1,14 @@
 //'use strict';
 
-const pandaScoreApiKey = "I1gUWPYeIdH3ocN94UHnd5Zfpvchy78r4ZE_ZfHAZczefqTpojg";
+
 const twitchApiKey = "tszgw747t4ad80nlczn9t658cma89p";
 
 
-/* function formatSearchQuery(params) {
+ function formatSearchQuery(params) {
 	console.log('formatting ran!');
 	const queryTerm = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
 	return queryTerm.join('&');
-} */
+}
 
 let maxResults = 10;
 
@@ -29,7 +29,7 @@ function displayStreams(responseJson, maxResults) {
 				<a class="stream-url" href="${responseJson.streams[i].channel.url}">${responseJson.streams[i].channel.url}</a>
 			</li>
 			`)
-	$('.js-results-1').removeClass('hidden');
+	$('.results-container-1').removeClass('hidden');
 	};
 };
 
@@ -49,17 +49,37 @@ function displayClips(responseJson, maxResults) {
 				<h4>${responseJson.clips[i].title}</h4>
 				<iframe
 		    src="https://clips.twitch.tv/embed?clip=${responseJson.clips[i].slug}&autoplay=false"
-		    height="300"
-		    width="400"
+		    height="225"
+		    width="300"
 		    preload="metadata"
 		    scrolling="no"
 		    allowfullscreen="true">
 				</iframe>
 			</li>
 			`)
-		$('.js-results-2').removeClass('hidden');
+		$('.results-container-2').removeClass('hidden');
 	};
 };
+
+function displayYouTubeResults(responseJson, maxResults) {
+	console.log('displayYouTubeResults ran!');
+	console.log(responseJson);
+	$('.js-results-3').empty();
+	$('.js-results-3').append(
+		`<ul class="yt-results-list">
+			<li><h3>Top YouTube Videos</h3></li>
+		</ul>`
+		);
+	for(let i = 0; i < maxResults; i++) {
+		$('.yt-results-list').append(`
+			<li class="yt-li">
+				<a class="yt-title" href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}">${responseJson.items[i].snippet.title}</a>
+				<img class="yt-thumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}">
+			</li>
+			`)
+		$('.results-container-3').removeClass('hidden');
+	};
+}
 
 function fetchTwitchStreamData(query, maxResults) {
 
@@ -114,21 +134,26 @@ function fetchTwitchClipsData(query, maxResults) {
 		});
 }
 
-function fetchEsportsData(query, maxResults) {
+function fetchYoutubeData(query, maxResults) {
 
-	const options = {
-		mode: 'cors',
-		method: 'GET',
-		headers: new Headers({
-			//'Accept': 'application/json',
-			//'Authorization': 'Bearer I1gUWPYeIdH3ocN94UHnd5Zfpvchy78r4ZE_ZfHAZczefqTpojg'
-
-		})
+	const params = {
+		'q': query,
+		'maxResults': maxResults,
+		'part': 'snippet',
+		'key': 'AIzaSyAXgHhbaVGMsi4Sfvf2vbdiP6jNMonQ5FA'
 	}
 
-	//const url = `https://api.pandascore.co/videogames/${encodeURIComponent(query)}/tournaments`
+	const url = 'https://www.googleapis.com/youtube/v3/search' + '?' + formatSearchQuery(params)
+	console.log(url);
 
-	const url = `https://api.pandascore.co/videogames?token=I1gUWPYeIdH3ocN94UHnd5Zfpvchy78r4ZE_ZfHAZczefqTpojg`
+	const options = {
+		method: 'GET',
+		headers: new Headers({
+			'Accept': 'application/json',
+			//'Authorization': 'Bearer AIzaSyAXgHhbaVGMsi4Sfvf2vbdiP6jNMonQ5FA'
+
+		})
+	};
 
 	fetch(url, options)
 		.then(response => {
@@ -139,7 +164,7 @@ function fetchEsportsData(query, maxResults) {
 				throw new Error(response);
 			}
 		})
-		.then(responseJson => displayResults(responseJson, maxResults))
+		.then(responseJson => displayYouTubeResults(responseJson, maxResults))
 		.catch(console.error);
 
 }
@@ -148,6 +173,9 @@ function fetchEsportsData(query, maxResults) {
 function watchSubmit() {
 	$('#js-form').submit(event => {
 		event.preventDefault();
+		$('.js-results-1').addClass('hidden');
+		$('.js-results-2').addClass('hidden');
+		$('.js-results-3').addClass('hidden');
 		let searchTerm = $('.js-search').val();
 		maxResults = $('.js-max-results').val();
 		if($('.js-checkbox-1').is(":checked")){
@@ -157,7 +185,7 @@ function watchSubmit() {
 			fetchTwitchClipsData(searchTerm, maxResults);
 		};
 		if($('.js-checkbox-3').is(":checked")){
-			fetchEsportsData(searchTerm, maxResults);
+			fetchYoutubeData(searchTerm, maxResults);
 		};
 		});
 	$('.js-search').val('');
