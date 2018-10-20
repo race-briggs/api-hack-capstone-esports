@@ -20,7 +20,7 @@ function displayStreams(responseJson, maxResults) {
 	$('.js-results-1').empty();
 	$('.js-results-1').append(
 		`<ul class="stream-results-list">
-			<li><h3>Top Live Streams</h3></li>
+			<li><h3 class="section-title">top live streams</h3></li>
 		</ul>`
 		);
 	for(let i = 0; i < maxResults; i++) {
@@ -42,7 +42,7 @@ function displayClips(responseJson, maxResults) {
 	$('.js-results-2').empty();
 	$('.js-results-2').append(
 		`<ul class="clip-results-list">
-			<li><h3>Top Clips</h3></li>
+			<li><h3 class="section-title">top clips</h3></li>
 		</ul>`
 		);
 	for(let i = 0; i < maxResults; i++) {
@@ -70,7 +70,7 @@ function displayYouTubeResults(responseJson, maxResults) {
 	$('.js-results-3').empty();
 	$('.js-results-3').append(
 		`<ul class="yt-results-list">
-			<li><h3>Top YouTube Videos</h3></li>
+			<li><h3 class="section-title">top youtube videos</h3></li>
 		</ul>`
 		);
 	for(let i = 0; i < maxResults; i++) {
