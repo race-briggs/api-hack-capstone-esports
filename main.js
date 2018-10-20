@@ -1,9 +1,9 @@
-//'use strict';
+'use strict';
 
 
 const twitchApiKey = "tszgw747t4ad80nlczn9t658cma89p";
 
-
+//format search params function, if necessary or easier
  function formatSearchQuery(params) {
 	console.log('formatting ran!');
 	const queryTerm = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
@@ -12,6 +12,8 @@ const twitchApiKey = "tszgw747t4ad80nlczn9t658cma89p";
 
 let maxResults = 10;
 
+//needed separate display functions in order to achieve the separate search/results parameters and their differing layouts
+//display fetch stream data results function
 function displayStreams(responseJson, maxResults) {
 	console.log('displayStreams ran!');
 	console.log(responseJson);
@@ -33,7 +35,7 @@ function displayStreams(responseJson, maxResults) {
 	};
 };
 
-
+//display fetch clips results function
 function displayClips(responseJson, maxResults) {
 	console.log('displayClips ran!');
 	console.log(responseJson);
@@ -61,6 +63,7 @@ function displayClips(responseJson, maxResults) {
 	};
 };
 
+//display fetch YouTube API for videos results function
 function displayYouTubeResults(responseJson, maxResults) {
 	console.log('displayYouTubeResults ran!');
 	console.log(responseJson);
@@ -81,6 +84,8 @@ function displayYouTubeResults(responseJson, maxResults) {
 	};
 }
 
+//needed separate fetch requests because of the different params required for the fetch requests
+//fetch twitch API for streams function
 function fetchTwitchStreamData(query, maxResults) {
 
 	const options = {
@@ -107,6 +112,7 @@ function fetchTwitchStreamData(query, maxResults) {
 		});
 }
 
+//fetch twitch API for clips fucnction
 function fetchTwitchClipsData(query, maxResults) {
 
 	const options = {
@@ -134,6 +140,8 @@ function fetchTwitchClipsData(query, maxResults) {
 		});
 }
 
+
+//fetch YouTube API for videos
 function fetchYoutubeData(query, maxResults) {
 
 	const params = {
@@ -150,8 +158,6 @@ function fetchYoutubeData(query, maxResults) {
 		method: 'GET',
 		headers: new Headers({
 			'Accept': 'application/json',
-			//'Authorization': 'Bearer AIzaSyAXgHhbaVGMsi4Sfvf2vbdiP6jNMonQ5FA'
-
 		})
 	};
 
@@ -166,10 +172,9 @@ function fetchYoutubeData(query, maxResults) {
 		})
 		.then(responseJson => displayYouTubeResults(responseJson, maxResults))
 		.catch(console.error);
-
 }
 
-
+//watch for submission, clear the results for new searches
 function watchSubmit() {
 	$('#js-form').submit(event => {
 		event.preventDefault();

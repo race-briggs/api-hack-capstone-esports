@@ -27,7 +27,7 @@ h1, h2, legend {
 }
 
 h1 {
-	font-family: 'Faster One', cursive;
+	font-family: 'Righteous', cursive;
 }
 
 h3, h4 {
@@ -117,7 +117,7 @@ a:active, a:visited {
 	border: 2px solid black;
 }
 
-
+/*mobile css, should work on screens under 640px width*/
 
 @media only screen and (max-width: 640px) {
 
