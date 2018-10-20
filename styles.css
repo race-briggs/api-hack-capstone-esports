@@ -9,8 +9,7 @@ html {
 }
 
 body {
-	background-image: url("SVG_BG_Race_Icons_FINAL-01.svg");
-	background-size: cover;
+	background-image: url("api-capstone-bg.png");
 	margin-right: auto;
 	margin-left: auto;
 }
