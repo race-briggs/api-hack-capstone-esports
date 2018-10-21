@@ -3,7 +3,7 @@
 }
 
 html {
-	margin: auto;
+	margin: 0;
 	text-align: center;
 	padding: 5px;
 }
@@ -36,6 +36,7 @@ h3, h4 {
 	margin-right: auto;
 	text-align: center;
 	display: block;
+	color: white;
 }
 
 .section-title {
@@ -59,7 +60,7 @@ main {
 	border: .01px solid none;
 	border-radius: 15px;
 	box-shadow: 0 0 10px #888888;
-	width: 30%;
+	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: 5%;
@@ -67,6 +68,7 @@ main {
 
 legend {
 	font-size: 1.2em;
+	margin-bottom: 1%;
 }
 
 ul {
@@ -96,12 +98,23 @@ a:active, a:visited {
 	justify-content: center;
 }
 
+.search-container, .num-container {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 2%;
+}
+
+.search-label {
+	width: 130.39px;
+	text-align: left;
+}
+
 .js-search {
-	margin-right: 1%;
+	width: 40%;
 }
 
 .js-max-results {
-	margin-left: 1%;
+	width: 40%;
 }
 
 .yt-title, .yt-li {
@@ -128,8 +141,8 @@ a:active, a:visited {
 }
 
 .chk-box-container, .checkbox-block {
-	margin-top: 2%;
-	margin-bottom: 2%;
+	margin-top: 1%;
+	margin-bottom: 1%;
 }
 
 .js-submit {
@@ -175,8 +188,8 @@ a:active, a:visited {
 		width: 70%;
 	}
 
-	.js-search, .js-max-results {
-		margin: 1.5% auto 1.5% auto;
+	main {
+		width: 70%;
 	}
 }
 
@@ -213,10 +226,6 @@ a:active, a:visited {
 		padding-right: 1.04166666%;
 	}
 
-	input {
-		margin-bottom: 5%;
-	}
-
 	input[type=checkbox] {
 		font-size: 0.5em;
 		text-align: left;
@@ -231,11 +240,31 @@ a:active, a:visited {
 	}
 
 	.js-search, .js-max-results {
-		margin-top: 1.5%;
-		margin-bottom: 1.5%;
+		width: 50%;
+		margin: 0 0 1.5% 0;
 	}
 
 	.results-container-1, .results-container-2, .results-container-3 {
 		margin-top: 5%;
+	}
+
+	.search-container, .num-container {
+		margin-bottom: .5%;
+	}
+
+
+}
+
+/*very minor stylistic tweaks for smaller viewports*/
+
+@media only screen and (max-width: 600px) {
+	.js-search, .js-max-results {
+		width: 85%;
+		margin: 0 0 1.5% 0;
+	}
+
+	.search-container, .num-container {
+		display: block;
+		margin-bottom: 0;
 	}
 }

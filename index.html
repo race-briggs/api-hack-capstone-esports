@@ -19,8 +19,14 @@
 		<form id="js-form">
 			<fieldset>
 				<legend role="legend">Enter the full title of a game and choose which results to display</legend>
-				<input type="text" class="js-search" placeholder="Game title..." required>
-				<input type="number" class="js-max-results" value="10" placeholder="Number of results..." value="10" min="0" required>
+					<div class="search-container">
+						<label for="search-input" class="search-label">Enter Game Title:</label>
+						<input type="text" class="js-search" placeholder="Game title..." required>
+					</div>
+					<div class="num-container">
+						<label for="max-results" class="num-label">Number of Results:</label>
+						<input type="number" name="max-results" class="js-max-results" value="5" placeholder="Number of results..." min="1" max="25">
+					</div>
 				<div class="chk-box-container">		
 					<label class="checkbox-block">	
 						<input type="checkbox" class="js-checkbox-1" value="streams"> Look for Streams

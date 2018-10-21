@@ -10,7 +10,7 @@ const twitchApiKey = "tszgw747t4ad80nlczn9t658cma89p";
 	return queryTerm.join('&');
 }
 
-let maxResults = 10;
+let maxResults = 5;
 
 //needed separate display functions in order to achieve the separate search/results parameters and their differing layouts
 //display fetch stream data results function
@@ -27,7 +27,7 @@ function displayStreams(responseJson, maxResults) {
 		$('.stream-results-list').append(`
 			<li class="stream-result">
 				<h4>${responseJson.streams[i].channel.name}</h4>
-				<img class="stream-preview" src="${responseJson.streams[i].preview.medium}">
+				<a href="${responseJson.streams[i].channel.url}"><img class="stream-preview" src="${responseJson.streams[i].preview.medium}"></a>
 				<a class="stream-url" href="${responseJson.streams[i].channel.url}">${responseJson.streams[i].channel.url}</a>
 			</li>
 			`)
@@ -77,7 +77,7 @@ function displayYouTubeResults(responseJson, maxResults) {
 		$('.yt-results-list').append(`
 			<li class="yt-li">
 				<a class="yt-title" href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}">${responseJson.items[i].snippet.title}</a>
-				<img class="yt-thumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}">
+				<a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}"><img class="yt-thumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}"></a>
 			</li>
 			`)
 		$('.results-container-3').removeClass('hidden');
